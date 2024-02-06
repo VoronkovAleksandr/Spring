@@ -1,7 +1,10 @@
 package ru.voronkov.HomeWork003.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ru.voronkov.HomeWork003.models.User;
@@ -33,9 +36,15 @@ public class TaskController {
         return service.sortUsersByAge(service.getRepository().getUsers());
     }
 
-    //метод filterUsersByAge
-    //Подсказка  @GetMapping("/filter/{age}")
 
-    //метод calculateAverageAge
-    //Подсказка  @GetMapping("/calc")
+    @GetMapping("/filter/{age}")
+    public ResponseEntity<?> filterUsersByAge(@PathVariable int age){
+        return new ResponseEntity<>(service.filterUsersByAge(service.getUsers(), age), HttpStatus.OK);
+    }
+
+    @GetMapping("/calc")
+    public ResponseEntity<?> calculateAverageAge(){
+        return new ResponseEntity<>(service.calculateAverageAge(service.getUsers()), HttpStatus.OK);
+    }
+
 }

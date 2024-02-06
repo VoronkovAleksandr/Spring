@@ -12,11 +12,11 @@ import java.util.stream.Collectors;
 @Service
 public class DataProcessingService {
 
+    @Autowired
+    private UserRepository repository;
     public UserRepository getRepository() {
         return repository;
     }
-    @Autowired
-    private UserRepository repository;
 
 
     public List<User> sortUsersByAge(List<User> users) {
@@ -41,5 +41,9 @@ public class DataProcessingService {
     public void  addUserToList(User user)
     {
         repository.getUsers().add(user);
+    }
+
+    public List<User> getUsers(){
+        return repository.getUsers();
     }
 }
