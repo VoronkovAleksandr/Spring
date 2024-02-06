@@ -20,11 +20,13 @@ public class UserController {
     @Autowired
     DataProcessingService dataProcessingService;
 
+    // получение всех пользователей
     @GetMapping
     public ResponseEntity<List<User>> users(){
                 return new ResponseEntity<>(dataProcessingService.getUsers(), HttpStatus.OK);
     }
 
+    // добавление пользователя
     @PostMapping("/add")
     public ResponseEntity<?> userAddFromParam(@RequestBody User user){
         registrationService.processRegistration(user);
