@@ -1,10 +1,12 @@
 package ru.voronkov.HomeWork003.models;
 
 public class User {
-
+    // поля
     private String name;
     private int age;
     private String email;
+
+    // методы get и set
 
     public String getName() {
         return name;

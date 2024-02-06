@@ -20,6 +20,7 @@ public class TaskController {
     @Autowired
     private DataProcessingService service;
 
+    // заполнение и вывод всех заданий
     @GetMapping
     public List<String> getAllTasks()
     {
@@ -30,18 +31,21 @@ public class TaskController {
         return  tasks;
     }
 
-    @GetMapping("/sort")//localhost:8080/tasks/sort
+    // сортировка по возрасту
+    @GetMapping("/sort")
     public List<User> sortUsersByAge()
     {
         return service.sortUsersByAge(service.getRepository().getUsers());
     }
 
 
+    // фильтр по возрасту
     @GetMapping("/filter/{age}")
     public ResponseEntity<?> filterUsersByAge(@PathVariable int age){
         return new ResponseEntity<>(service.filterUsersByAge(service.getUsers(), age), HttpStatus.OK);
     }
 
+    // Вычисление среднего возраста
     @GetMapping("/calc")
     public ResponseEntity<?> calculateAverageAge(){
         return new ResponseEntity<>(service.calculateAverageAge(service.getUsers()), HttpStatus.OK);

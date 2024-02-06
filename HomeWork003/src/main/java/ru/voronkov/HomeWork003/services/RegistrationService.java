@@ -18,7 +18,7 @@ public class RegistrationService {
         return dataProcessingService;
     }
 
-    //Метод processRegistration
+    // регистрация пользователя + вывод подтверждения в консоль
     public void processRegistration(User user){
         dataProcessingService.addUserToList(user);
         notificationService.notifyUser(user);
