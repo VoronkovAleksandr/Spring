@@ -23,7 +23,5 @@ public class UserService {
         notificationService.notifyUser(user);
         return user;
     }
-    public List<User> getAllUsers(){
 
-    }
 }

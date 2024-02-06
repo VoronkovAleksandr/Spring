@@ -4,15 +4,6 @@ import java.util.Objects;
 
 public class User {
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                '}';
-    }
-
     private int id;
 
     private String firstName;
@@ -54,5 +45,14 @@ public class User {
     @Override
     public int hashCode() {
         return Objects.hash(id, firstName, lastName);
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                '}';
     }
 }

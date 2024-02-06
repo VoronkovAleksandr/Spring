@@ -2,6 +2,7 @@ package ru.voronkov.HomeWork003.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import ru.voronkov.HomeWork003.models.User;
 
 @Service
 public class RegistrationService {
@@ -18,8 +19,8 @@ public class RegistrationService {
     }
 
     //Метод processRegistration
-    public void processRegistration(String name, int age, String email){
-        dataProcessingService.addUserToList(userService.createUser(name,age, email));
-        notificationService.sendNotification("User is added");
+    public void processRegistration(User user){
+        dataProcessingService.addUserToList(user);
+        notificationService.notifyUser(user);
     }
 }
