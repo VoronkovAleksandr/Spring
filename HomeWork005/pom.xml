@@ -12,7 +12,7 @@
 	<artifactId>HomeWork005</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>HomeWork005</name>
-	<description>Spting WEB, Data JPA, H2, Lombok</description>
+	<description>Spring WEB, Data JPA, H2, Lombok</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>
