@@ -19,14 +19,17 @@ public class TaskService {
         return repository.findAll();
     }
 
+    //Получить задачу по id
     public Optional<Task> getTaskById(Long id){
         return repository.findById(id);
     }
 
+    // Создать задачу
     public Task createTask(Task task){
         return repository.save(task);
     }
 
+    //Обновить задачу
     public Task updateTask(Long id, Task taskDetails){
         Optional<Task> optionalTask = repository.findById(id);
         if (optionalTask.isPresent()){
@@ -39,10 +42,12 @@ public class TaskService {
         }
     }
 
+    //Удалить задачу
     public void deleteTask(Long id){
         repository.deleteById(id);
     }
 
+    //Получить задачи отфильтрованные по статусу
     public List<Task> getTaskByStatus(Task.TaskStatus status) {
         return getAllTasks().stream()
                 .filter(t -> t.getStatus().equals(status))
