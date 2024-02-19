@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1 th:text="${text}"></h1>
+
+<form class="link" th:action="@{/home/user}" method="get">
+    <input class="link" type="submit" value="User page"/>
+</form>
+
+<form class="link" th:action="@{/home/admin}" method="get">
+    <input class="link" type="submit" value="Admin page"/>
+</form>
+<form class="link" th:action="@{/logout}" method="post">
+    <input class="link" type="submit" value="Logout"/>
+</form>
+
+</body>
+</html>

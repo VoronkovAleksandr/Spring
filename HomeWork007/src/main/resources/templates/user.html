@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Home user</title>
+</head>
+<body>
+<h1 th:text="${text}"></h1>
+<form class="link" th:action="@{/home}" method="get">
+    <input class="link" type="submit" value="To home page"/>
+</form>
+</body>
+</html>
