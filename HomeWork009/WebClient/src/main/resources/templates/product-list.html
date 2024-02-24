@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:insert="~{template :: header (pageTitle='products')}"></head>
+<body>
+
+<h1 class="center" align="center" th:text="${text}"></h1>
+<p><a href="products/add">Add product</a></p>
+<table class="table table-striped table-hover">
+    <thead>
+    <tr class="table-secondary">
+        <th>Title</th>
+        <th>Description</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="product : ${products}">
+        <td th:text="${product.title}"></td>
+        <td th:text="${product.description}"></td>
+        <td><a th:href="@{products/{id}(id=${product.id})}">Edit</a>   <a th:href="@{products/delete/{id}(id=${product.id})}">Delete</a></td>
+
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
