@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:insert="~{template :: header (pageTitle='storage')}"></head>
+<body>
+
+<h1 class="center" align="center" th:text="${text}"></h1>
+<p><a href="storage/add">Add product in storage</a></p>
+<table class="table table-striped table-hover">
+    <thead>
+    <tr class="table-secondary">
+        <th>Product</th>
+        <th>Quantity</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="product : ${storage}">
+        <td th:text="${product.product.title}"></td>
+        <td th:text="${product.quantity}"></td>
+        <td><a th:href="@{storage/{id}(id=${product.id})}">Edit</a></td>
+        <td><a th:href="@{storage/delete/{id}(id=${product.id})}">Delete</a></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
