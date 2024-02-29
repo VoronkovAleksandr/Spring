@@ -1,0 +1,13 @@
+server:
+  port: 8086
+spring:
+  application:
+    name: StorageServer
+  datasource:
+    url: jdbc:mysql://localhost:3311/springdb
+    username: user_spring
+    password: spring123
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
