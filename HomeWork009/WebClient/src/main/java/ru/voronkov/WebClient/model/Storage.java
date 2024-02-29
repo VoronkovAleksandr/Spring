@@ -8,9 +8,9 @@ import java.util.UUID;
 @Data
 public class Storage {
 
-    private final UUID id;
+    private UUID id;
 
-    private final Product product;
+    private Product product;
 
     private float quantity;
 }

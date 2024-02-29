@@ -42,7 +42,7 @@ public class ProductController {
     }
 
     //Редактировать товар
-    @PostMapping("/update/{id}")
+    @PutMapping("/update/{id}")
     public ResponseEntity<Void> updateProduct(@PathVariable UUID id,@RequestBody Product product){
         service.updateProduct(id, product);
         return ResponseEntity.ok(null);

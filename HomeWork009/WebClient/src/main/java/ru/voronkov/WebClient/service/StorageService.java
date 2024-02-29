@@ -6,6 +6,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+import ru.voronkov.WebClient.model.Product;
 import ru.voronkov.WebClient.model.Storage;
 import ru.voronkov.WebClient.model.api.StorageApi;
 
@@ -20,7 +21,10 @@ public class StorageService {
     private final StorageApi storageApi;
 
     //Добавление продукта на склад
-    public void addProductToStorage(Storage storage) {
+    public void addProductToStorage(Product product, float quantity) {
+        Storage storage = new Storage();
+        storage.setProduct(product);
+        storage.setQuantity(quantity);
         RestTemplate template = new RestTemplate();
         String path = storageApi.getBasicUri() + "/add";
         template.postForEntity(path, storage, Object.class);
@@ -43,15 +47,15 @@ public class StorageService {
         if (checkStorage != null) {
             checkStorage.setQuantity(storage.getQuantity());
             RestTemplate template = new RestTemplate();
-            String path = storageApi.getBasicUri() + "/update/{" + id + "}";
-            template.postForEntity(path, storage, Object.class);
+            String path = storageApi.getBasicUri() + "/update/" + id;
+            template.put(path, checkStorage);
         }
     }
 
     //Получение продукта на складе по id
     public Storage getStorageById(UUID id) {
         RestTemplate template = new RestTemplate();
-        String path = storageApi.getBasicUri() + "/{" + id + "}";
+        String path = storageApi.getBasicUri() + "/" + id;
         ResponseEntity<Storage> response = template.exchange(path,
                 HttpMethod.GET, null, new ParameterizedTypeReference<>() {
                 });
@@ -61,27 +65,8 @@ public class StorageService {
     //Удаление товара со склада
     public void deleteStorage(UUID id) {
         RestTemplate template = new RestTemplate();
-        String path = storageApi.getBasicUri() + "/delete/{" + id + "}";
-        template.postForEntity(path, null, Object.class);
+        String path = storageApi.getBasicUri() + "/delete/" + id;
+        template.delete(path);
     }
 
 }
-/**
- * //Изменение продукта на складе
- * public void updateStorage(UUID id, Storage storage){
- * Storage checkStorage = getStorageById(id);
- * if(checkStorage != null){
- * checkStorage.setQuantity(storage.getQuantity());
- * repository.save(checkStorage);
- * }
- * }
- * <p>
- * //Получение продукта на складе по id
- * public Storage getStorageById(UUID id){
- * return repository.findById(id).orElse(null);
- * }
- * <p>
- * public void deleteStorage(UUID id){
- * repository.deleteById(id);
- * }
- */

@@ -3,14 +3,14 @@
 <head th:insert="~{template :: header (pageTitle='storage')}"></head>
 
 <body>
-<form action="#" th:action="@{/storage/add}" th:object="${storage}" method="post">
+<form action="#" th:action="@{/storage/add}" method="post">
     <label for="product">Title</label>
     <select th:field="*{product}" id="product">
-        <option th:each="product : ${products}" th:value=${product.id} th:text="${product.title}"></option>
+        <option th:each="product : ${products}" th:value=${product} th:text="${product.title}"></option>
     </select>
     <br>
     <label for="quantity">Description</label>
-    <input type="text" th:field="*{quantity}" id="quantity" placeholder="Quantity">
+    <input type="text" th:field="*{quantity}" id="quantity" th:value="@{quantity}" placeholder="Quantity">
     <br>
     <input type="submit" value="Add product to storage">
 </form>

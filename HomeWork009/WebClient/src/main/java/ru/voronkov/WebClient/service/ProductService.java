@@ -51,7 +51,7 @@ public class ProductService {
             checkProduct.setDescription(changedProduct.getDescription());
             RestTemplate template = new RestTemplate();
             String path = productApi.getBasicUri() + "/update/" + id;
-            template.postForEntity(path, checkProduct, Object.class);
+            template.put(path, checkProduct);
         }
     }
 

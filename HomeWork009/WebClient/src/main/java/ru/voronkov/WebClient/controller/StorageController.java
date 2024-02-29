@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import ru.voronkov.WebClient.model.Storage;
+import ru.voronkov.WebClient.model.Product;
 import ru.voronkov.WebClient.service.ProductService;
 import ru.voronkov.WebClient.service.StorageService;
 
@@ -29,16 +30,16 @@ public class StorageController {
     }
 
     @PostMapping("/add")
-    public String addProductToStorage(Storage storage){
-        storageService.addProductToStorage(storage);
+    public String addProductToStorage(Product product, float quantity){
+        storageService.addProductToStorage(product, quantity);
         return "redirect:/storage";
     }
 
-//    @GetMapping("/add")
-//    public String addProductInStorage(Storage storage, Model model){
-//        model.addAttribute("products", productService.getAllProducts());
-//        return "storage-add";
-//    }
+    @GetMapping("/add")
+    public String addProductInStorage(Storage storage, Model model){
+        model.addAttribute("products", productService.getAllProducts());
+        return "storage-add";
+    }
 
     @PostMapping("/update/{id}")
     public String updateProductInStorage(@PathVariable UUID id, Storage storage){
