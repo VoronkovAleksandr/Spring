@@ -22,13 +22,13 @@ public class StorageController {
     }
 
     @PostMapping("/add")
-    public String addProductToStorage(Storage storage){
+    public String addProductToStorage(@RequestBody Storage storage){
         storageService.addProductToStorage(storage);
         return "redirect:/storage";
     }
 
-    @PostMapping("/update/{id}")
-    public ResponseEntity<Void> updateProductInStorage(@PathVariable UUID id, Storage storage){
+    @PutMapping("/update/{id}")
+    public ResponseEntity<Void> updateProductInStorage(@PathVariable UUID id,@RequestBody Storage storage){
         storageService.updateStorage(id, storage);
         return ResponseEntity.ok(null);
     }
@@ -38,7 +38,7 @@ public class StorageController {
         return ResponseEntity.ok(storageService.getStorageById(id));
     }
 
-    @PostMapping("/delete/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<Void> deleteProductFromStorage(@PathVariable UUID id){
         storageService.deleteStorage(id);
         return ResponseEntity.ok(null);

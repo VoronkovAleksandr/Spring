@@ -3,10 +3,10 @@
 <head th:insert="~{template :: header (pageTitle='storage')}"></head>
 
 <body>
-<form action="#" th:action="@{/storage/add}" th:object="${[product.id, quantity]}" method="post">
+<form action="#" th:action="@{/storage/add}" th:object="${storage}" method="post">
     <label for="product">Title</label>
     <select th:field="*{product}" id="product">
-        <option th:each="product : ${products}" th:value="${product.id}" th:text="${product.title}"></option>
+        <option th:each="product : ${products}" th:value=${product.id} th:text="${product.title}"></option>
     </select>
     <br>
     <label for="quantity">Description</label>

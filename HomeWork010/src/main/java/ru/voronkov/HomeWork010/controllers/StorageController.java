@@ -1,16 +1,12 @@
-package ru.voronkov.WebClient.controller;
+package ru.voronkov.HomeWork010.controllers;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import ru.voronkov.WebClient.model.Storage;
-import ru.voronkov.WebClient.model.Product;
-import ru.voronkov.WebClient.service.ProductService;
-import ru.voronkov.WebClient.service.StorageService;
+import org.springframework.web.bind.annotation.*;
+import ru.voronkov.HomeWork010.models.Storage;
+import ru.voronkov.HomeWork010.services.ProductService;
+import ru.voronkov.HomeWork010.services.StorageService;
 
 import java.util.UUID;
 
