@@ -19,11 +19,12 @@ public class ProductController {
 
     //Создать товар
     @PostMapping("/add")
-    public ResponseEntity<Product> addProduct(Product product){
+    public ResponseEntity<Product> addProduct(@RequestBody Product product){
         try {
             service.addProduct(product);
             return ResponseEntity.status(HttpStatus.OK).build();
         } catch (Exception e){
+            System.out.println("Error: " + e);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
@@ -42,13 +43,13 @@ public class ProductController {
 
     //Редактировать товар
     @PostMapping("/update/{id}")
-    public ResponseEntity<Void> updateProduct(@PathVariable UUID id, Product product){
+    public ResponseEntity<Void> updateProduct(@PathVariable UUID id,@RequestBody Product product){
         service.updateProduct(id, product);
         return ResponseEntity.ok(null);
     }
 
     //Удалить товар
-    @GetMapping("/delete/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<Void> deleteProduct(@PathVariable UUID id){
         service.deleteProduct(id);
         return ResponseEntity.ok(null);

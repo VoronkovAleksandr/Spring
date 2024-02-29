@@ -32,7 +32,8 @@ public class StorageService {
         String path = storageApi.getBasicUri();
         ResponseEntity<List<Storage>> response = template.exchange(path,
                 HttpMethod.GET, null,
-                new ParameterizedTypeReference<List<Storage>>() {});
+                new ParameterizedTypeReference<List<Storage>>() {
+                });
         return response.getBody();
     }
 
@@ -42,7 +43,7 @@ public class StorageService {
         if (checkStorage != null) {
             checkStorage.setQuantity(storage.getQuantity());
             RestTemplate template = new RestTemplate();
-            String path = storageApi.getBasicUri() + "/update/" + id;
+            String path = storageApi.getBasicUri() + "/update/{" + id + "}";
             template.postForEntity(path, storage, Object.class);
         }
     }
@@ -50,7 +51,7 @@ public class StorageService {
     //Получение продукта на складе по id
     public Storage getStorageById(UUID id) {
         RestTemplate template = new RestTemplate();
-        String path = storageApi.getBasicUri() + "/{"+id+"}";
+        String path = storageApi.getBasicUri() + "/{" + id + "}";
         ResponseEntity<Storage> response = template.exchange(path,
                 HttpMethod.GET, null, new ParameterizedTypeReference<>() {
                 });
@@ -60,7 +61,7 @@ public class StorageService {
     //Удаление товара со склада
     public void deleteStorage(UUID id) {
         RestTemplate template = new RestTemplate();
-        String path = storageApi.getBasicUri() + "/update/" + id;
+        String path = storageApi.getBasicUri() + "/delete/{" + id + "}";
         template.postForEntity(path, null, Object.class);
     }
 

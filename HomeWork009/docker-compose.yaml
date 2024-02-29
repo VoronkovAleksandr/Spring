@@ -5,7 +5,7 @@ services:
       container_name: db_mysql
       image: mysql
       ports:
-         - "3306:3306"
+         - "3311:3306"
       restart: always
       environment:
          MYSQL_USER: user_spring
