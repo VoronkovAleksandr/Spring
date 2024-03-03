@@ -30,8 +30,8 @@ public class StorageController {
     }
 
     @PostMapping("/add")
-    public String addProductToStorage(Storage storage){
-        storageService.addProductToStorage(storage);
+    public String addProductToStorage(Product product, float quantity){
+        storageService.addProductToStorage(product, quantity);
         return "redirect:/storage";
     }
 

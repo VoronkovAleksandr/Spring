@@ -21,7 +21,10 @@ public class StorageService {
     private final StorageApi storageApi;
 
     //Добавление продукта на склад
-    public void addProductToStorage(Storage storage) {
+    public void addProductToStorage(Product product, float quantity) {
+        Storage storage = new Storage();
+        storage.setProduct(product);
+        storage.setQuantity(quantity);
         RestTemplate template = new RestTemplate();
         String path = storageApi.getBasicUri() + "/add";
         template.postForEntity(path, storage, Object.class);
