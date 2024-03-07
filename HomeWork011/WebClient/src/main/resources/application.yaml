@@ -1,0 +1,21 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: WebClient
+
+api:
+  product:
+    basicUri: http://localhost:8083/products
+  storage:
+    basicUri: http://localhost:8083/storage
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: metrics, prometheus, health  # env, info, health
+  endpoint:
+    health:
+      show-details: always

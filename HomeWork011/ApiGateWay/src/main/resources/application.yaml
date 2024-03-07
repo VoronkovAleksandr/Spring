@@ -1,0 +1,25 @@
+server:
+  port: 8083
+
+spring:
+  application:
+    name: apigateway
+
+routes:
+  - id: Product
+    uri: http://localhost:8085/
+    predicates:
+      - Path=/products/**
+  - id: Store
+    uri: http://localhost:8086/
+    predicates:
+      - Path=/storage/**
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: metrics, prometheus, health  # env, info, health
+  endpoint:
+    health:
+      show-details: always

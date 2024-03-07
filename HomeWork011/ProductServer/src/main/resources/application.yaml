@@ -1,0 +1,23 @@
+server:
+  port: 8085
+
+spring:
+  application:
+    name: ProductServer
+  datasource:
+    url: jdbc:mysql://localhost:3311/springdb
+    username: user_spring
+    password: spring123
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: metrics, prometheus, health  # env, info, health
+  endpoint:
+    health:
+      show-details: always
